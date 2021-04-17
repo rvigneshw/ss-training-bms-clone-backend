@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-const CatboxRedis = require('@hapi/catbox-redis');
+const catboxRedis = require('catbox-redis')
 
 const plugins = require('./plugins').plugins;
 const cookieAuthStrategy = require('./strategy').cookieAuthStrategy;
@@ -8,9 +8,10 @@ const serverMethods =  require('./servermethods');
 
   
 // Create a server with a host and port
-const server = new Hapi.Server({
-  cache: require('catbox-redis'),
-});
+// const server = new Hapi.Server({
+//   cache: catboxRedis,
+// });
+const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
   port: Number(process.argv[2]) || 8080
@@ -33,7 +34,7 @@ server.route({
   method: 'GET',
   path:'/',
   handler: function (request, reply) {
-    request.cookieAuth.set({id:1});
+    // request.cookieAuth.set({id:1});
     return reply('HapiJS Server running!');
   }
 });
@@ -58,13 +59,31 @@ server.method(
 );
 
 const bootUpServer = async () => {
-    await server.start();
-    console.log(`Server is running at ${server.info.uri}`)
+    
+    try {
+      await server.start();
+      console.log(`Server is running at ${server.info.uri}`)
+    } catch (error) {
+      console.log(error);
+    }
+    // await server.start();
+    // console.log(`Server is running at ${server.info.uri}`)
 
     process.on('unhandledRejection', (err) => {
         console.log(err);
         process.exit(1);
     })
+    // server.start(function(err) {
+    //   if(err) {
+    //       throw err;
+    //   }
+    //   console.log(`Server is running at ${server.info.uri}`)
+
+    //   process.on('unhandledRejection', (err) => {
+    //       console.log(err);
+    //       process.exit(1);
+    //   })
+    // });
 }
 
 bootUpServer();

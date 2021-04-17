@@ -142,46 +142,47 @@ const seats = [1,2,3,4,5,6,7,8];
 let moviesArray = [];
 
 (async () => {
-  createIndexAndPutMapping();
-  await sequelize.sync({ force: true })
-  usersArray.forEach(async (user)=>{
-    const createdUser = await User.create({username:user,password:'1234'});
-    // moviesArray.push(createdMovie);
-  })
-  movies.forEach(async (movie)=>{
-    const createdMovie = await Movie.create({name:movie,genre:'actions'});
-    moviesArray.push(createdMovie);
-    console.log(moviesArray)
-  cities.forEach( async(city) => {
-    const createdCity = await City.create({ name: city,pincode: 609200});
+  // createIndexAndPutMapping();
+  // await sequelize.sync({ force: true })
+  await sequelize.sync()
+//   // usersArray.forEach(async (user)=>{
+//   //   const createdUser = await User.create({username:user,password:'1234'});
+//   //   // moviesArray.push(createdMovie);
+//   // })
+//   // movies.forEach(async (movie)=>{
+//   //   const createdMovie = await Movie.create({name:movie,genre:'actions'});
+//   //   moviesArray.push(createdMovie);
+//   //   console.log(moviesArray)
+//   // cities.forEach( async(city) => {
+//   //   const createdCity = await City.create({ name: city,pincode: 609200});
     
-    theatreHalls.forEach( async(theatreHall)=>{
-      const createdTheatreHall = await TheatreHall.create({ name: theatreHall});
+//   //   theatreHalls.forEach( async(theatreHall)=>{
+//   //     const createdTheatreHall = await TheatreHall.create({ name: theatreHall});
       
-      screens.forEach( async(screen) => {
-        const createdScreen = await Screen.create({ name: screen});
+//   //     screens.forEach( async(screen) => {
+//   //       const createdScreen = await Screen.create({ name: screen});
         
-        shows.forEach( async(show)=>{
-          const createdShow = await Show.create({ name: show});
-          const randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];
-          // const movie = await Movie.create({name:randomMovie,genre:'actions'});
-          seats.forEach( async(seat) => {
-            const createdSeat = await Seat.create({ seatNumber: seat,status:seatStatusArray[Math.floor(Math.random() * seatStatusArray.length)]});
-            createdShow.addSeat(createdSeat);
-          })
-          createdScreen.addShow(createdShow);
-          createdShow.setMovie(randomMovie);
-          createdCity.addShow(createdShow);
-        })
+//   //       shows.forEach( async(show)=>{
+//   //         const createdShow = await Show.create({ name: show});
+//   //         const randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];
+//   //         // const movie = await Movie.create({name:randomMovie,genre:'actions'});
+//   //         seats.forEach( async(seat) => {
+//   //           const createdSeat = await Seat.create({ seatNumber: seat,status:seatStatusArray[Math.floor(Math.random() * seatStatusArray.length)]});
+//   //           createdShow.addSeat(createdSeat);
+//   //         })
+//   //         createdScreen.addShow(createdShow);
+//   //         createdShow.setMovie(randomMovie);
+//   //         createdCity.addShow(createdShow);
+//   //       })
         
-        createdTheatreHall.addScreen(createdScreen);
-      })
+//   //       createdTheatreHall.addScreen(createdScreen);
+//   //     })
 
-      createdCity.addTheatreHall(createdTheatreHall);
-    })
+//   //     createdCity.addTheatreHall(createdTheatreHall);
+//   //   })
 
-  })
-})
+//   // })
+// })
 console.log(moviesArray)
 })();
 

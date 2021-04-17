@@ -11,7 +11,12 @@ module.exports = [
             handler: async (request, reply) => {
                 try {
                     const cityID = request.params.id;
-                    const moviesRunningInTheCity = await server.methods.getMoviesForTheGivenCityFromDBCacheMethod(cityID)
+                    // request.server.methods.getMoviesForTheGivenCityFromDBCacheMethod(cityID, (err, result) => {
+
+                    //     console.log(result);
+                    // });
+                    
+                    const moviesRunningInTheCity = await request.server.methods.getMoviesForTheGivenCityFromDBCacheMethod(cityID)
                     return reply({ data: moviesRunningInTheCity })
                 } catch (error) {
                     return reply({ error: error.message })

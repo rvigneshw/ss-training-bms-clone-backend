@@ -1,9 +1,8 @@
 const Joi = require('joi');
-const Models = require('../models')
+const Models = require('./models')
 
 module.exports.cacheOptions = {
     cache: {
-        cache: 'my_cache',
         expiresIn: 10 * 1000,
         generateTimeout: 2000
     }
