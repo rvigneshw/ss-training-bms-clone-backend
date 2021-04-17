@@ -1,3 +1,6 @@
+const Joi = require('joi');
+const Models = require('../models')
+
 module.exports.cacheOptions = {
     cache: {
         cache: 'my_cache',
@@ -6,7 +9,7 @@ module.exports.cacheOptions = {
     }
 }
 
-const getMoviesForTheGivenCityFromDB = async (id) => {
+const getMoviesForTheGivenCityFromDB = async (cityID) => {
     const moviesRunningInTheCity = await Models.Show.findAll({
         include: [{
             model : Models.Movie,
