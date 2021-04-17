@@ -1,0 +1,24 @@
+{
+  "name": "hapi-cookie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/catbox-redis": "^6.0.2",
+    "bull": "^3.22.0",
+    "catbox-redis": "^4.2.4",
+    "elasticsearch": "^16.7.2",
+    "hapi": "^16.7.0",
+    "hapi-auth-cookie": "^7.1.0",
+    "joi": "10.2.2",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.1"
+  }
+}
