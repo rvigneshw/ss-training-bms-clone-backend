@@ -51,11 +51,11 @@ server.route({
 
 server.route(routes);
 
-// server.method(
-//   'getMoviesForTheGivenCityFromDBCacheMethod',
-//   serverMethods.getMoviesForTheGivenCityFromDBCacheMethod,
-//   serverMethods.options
-// );
+server.method(
+  'getMoviesForTheGivenCityFromDBCacheMethod',
+  serverMethods.getMoviesForTheGivenCityFromDBCacheMethod,
+  serverMethods.options
+);
 
 const bootUpServer = async () => {
     await server.start();
